@@ -12,8 +12,7 @@
 #  index_topics_on_label  (label) UNIQUE
 #
 class Topic < ApplicationRecord
-  validates :label, presence: true
-  validates :image, presence: true
+  validates :label, :image, presence: true
   validates :label, uniqueness: true
 
   has_one_attached :image, dependent: :destroy
