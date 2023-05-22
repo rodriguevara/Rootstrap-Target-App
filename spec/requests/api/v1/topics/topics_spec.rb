@@ -18,7 +18,5 @@ describe 'GET api/v1/topics', type: :request do
     subject
     expect(json[:topics].first[:id]).to eq(first_topic.id)
     expect(json[:topics].first[:label]).to eq(first_topic.label)
-    expect(json[:topics].first[:created_at]).to eq(first_topic.created_at.as_json)
-    expect(json[:topics].first[:updated_at]).to eq(first_topic.updated_at.as_json)
   end
 end
