@@ -26,8 +26,8 @@ RSpec.describe Target, type: :model do
     it { is_expected.to validate_presence_of(:radius) }
     it { is_expected.to validate_presence_of(:lat) }
     it { is_expected.to validate_presence_of(:lon) }
-    it { is_expected.to validate_presence_of(:user_id) }
-    it { is_expected.to validate_presence_of(:topic_id) }
+    it { is_expected.to belong_to(:user) }
+    it { is_expected.to belong_to(:topic) }
     it { is_expected.to validate_numericality_of(:radius).is_greater_than(0) }
     it { is_expected.to validate_numericality_of(:lat) }
     it { is_expected.to validate_numericality_of(:lon) }
