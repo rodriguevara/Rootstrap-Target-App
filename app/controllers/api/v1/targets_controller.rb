@@ -3,13 +3,13 @@ module Api
     class TargetsController < Api::V1::ApiController
       def create
         authorize Target
-        @target = Target.create!(target_params)
+        @target = current_user.targets.create!(target_params)
       end
 
       private
 
       def target_params
-        params.require(:target).permit(:title, :radius, :lat, :lon, :topic_id, :user_id)
+        params.require(:target).permit(:title, :radius, :lat, :lon, :topic_id)
       end
     end
   end
