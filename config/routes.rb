@@ -19,7 +19,7 @@ Rails.application.routes.draw do
         get :must_update, on: :collection
       end
       resources :topics, only: %i[index]
-      resources :targets, only: %i[create]
+      resources :targets, only: %i[create index]
     end
   end
 end

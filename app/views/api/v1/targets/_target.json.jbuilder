@@ -1,1 +1,1 @@
-json.extract! target, :title, :radius, :lat, :lon, :topic_id, :user_id
+json.extract! target, :id, :title, :radius, :lat, :lon, :topic_id

@@ -11,7 +11,6 @@ describe 'POST api/v1/targets', type: :request do
     let(:lat)             { -33.8866 }
     let(:lon)             { -58.6688 }
     let(:topic_id)        { topic.id }
-    let(:user_id)         { user.id }
 
     let(:params) do
       {
@@ -19,8 +18,7 @@ describe 'POST api/v1/targets', type: :request do
         radius:,
         lat:,
         lon:,
-        topic_id:,
-        user_id:
+        topic_id:
       }
     end
 
@@ -40,7 +38,6 @@ describe 'POST api/v1/targets', type: :request do
       expect(json[:target][:lat]).to eq(target.lat)
       expect(json[:target][:lon]).to eq(target.lon)
       expect(json[:target][:topic_id]).to eq(target.topic_id)
-      expect(json[:target][:user_id]).to eq(target.user_id)
     end
 
     context 'when radius is incorrect' do
