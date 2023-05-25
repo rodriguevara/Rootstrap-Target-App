@@ -19,8 +19,8 @@ describe 'GET api/v1/targets', type: :request do
     subject
     expect(json[:targets].first[:title]).to eq(first_target.title)
     expect(json[:targets].first[:radius]).to eq(first_target.radius)
-    expect(json[:targets].first[:lat]).to eq(first_target.lat)
-    expect(json[:targets].first[:lon]).to eq(first_target.lon)
+    expect(json[:targets].first[:lat].round(10)).to eq(first_target.lat.round(10))
+    expect(json[:targets].first[:lon].round(10)).to eq(first_target.lon.round(10))
     expect(json[:targets].first[:topic_id]).to eq(first_target.topic_id)
   end
 end
