@@ -28,6 +28,6 @@ class Target < ApplicationRecord
   def targets_count
     return unless user.targets.count >= 3
 
-    errors.add(:base, "You can't create more than 3 targets")
+    errors.add(:user, "You can't create more than 3 targets")
   end
 end
