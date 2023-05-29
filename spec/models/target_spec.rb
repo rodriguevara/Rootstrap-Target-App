@@ -38,7 +38,7 @@ RSpec.describe Target, type: :model do
     let!(:target) {create(:target, title: 'test', radius: 5, lat: 33, lon: 58, user: user_1)}
 
     it 'is created successfully' do
-      binding.pry
+      # binding.pry
     end
   end
 end
