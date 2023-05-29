@@ -16,4 +16,5 @@ class Topic < ApplicationRecord
   validates :label, uniqueness: true
 
   has_one_attached :image, dependent: :destroy
+  has_many :targets, dependent: :destroy
 end
