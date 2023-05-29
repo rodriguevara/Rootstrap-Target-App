@@ -77,7 +77,7 @@ describe 'POST api/v1/targets', type: :request do
         subject
         expect(response).to be_bad_request
       end
-      
+
       it 'returns the error message' do
         subject
         expect(json[:errors][:user].first).to eq("You can't create more than 3 targets")

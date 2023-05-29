@@ -34,8 +34,8 @@ RSpec.describe Target, type: :model do
   end
 
   context 'when the user has 0 targets' do
-    let!(:user_1) { create(:user, first_name: nil, last_name: nil) }
-    let!(:target) {create(:target, title: 'test', radius: 5, lat: 33, lon: 58, user: user_1)}
+    let!(:user1) { create(:user, first_name: nil, last_name: nil) }
+    let!(:target) { create(:target, title: 'test', radius: 5, lat: 33, lon: 58, user: user1) }
 
     it 'is created successfully' do
       # binding.pry
