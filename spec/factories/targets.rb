@@ -23,7 +23,7 @@ FactoryBot.define do
     radius { Faker::Number.between(from: 1.0, to: 600_000.0).round(2) }
     lat { Faker::Address.latitude }
     lon { Faker::Address.longitude }
-    association :user, factory: :user
-    association :topic, factory: :topic
+    user
+    topic
   end
 end
