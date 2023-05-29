@@ -20,12 +20,12 @@
 class Target < ApplicationRecord
   belongs_to :user
   belongs_to :topic
-  validate :targets_count, on: :create, unless: -> { user.nil? }
+  validate :user_targets_count, on: :create
   validates :title, presence: true
   validates :radius, presence: true, numericality: { greater_than: 0 }
   validates :lat, :lon, presence: true, numericality: true
 
-  def targets_count
+  def user_targets_count
     return unless user.targets.count >= 3
 
     errors.add(:user, "You can't create more than 3 targets")

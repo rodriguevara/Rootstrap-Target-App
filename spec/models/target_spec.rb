@@ -32,4 +32,13 @@ RSpec.describe Target, type: :model do
     it { is_expected.to validate_numericality_of(:lat) }
     it { is_expected.to validate_numericality_of(:lon) }
   end
+
+  context 'when the user has 0 targets' do
+    let!(:user_1) { create(:user, first_name: nil, last_name: nil) }
+    let!(:target) {create(:target, title: 'test', radius: 5, lat: 33, lon: 58, user: user_1)}
+
+    it 'is created successfully' do
+      binding.pry
+    end
+  end
 end
