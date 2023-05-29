@@ -2,7 +2,6 @@ describe 'POST api/v1/targets', type: :request do
   let(:user) { create(:user) }
   let(:topic)           { create(:topic) }
   let(:target)          { Target.last }
-  let(:failed_response) { 400 }
 
   describe 'POST create' do
     subject { post api_v1_targets_path, params:, headers: auth_headers, as: :json }
@@ -49,7 +48,7 @@ describe 'POST api/v1/targets', type: :request do
 
       it 'does not return a successful response' do
         subject
-        expect(response.status).to eq(failed_response)
+        expect(response).to be_bad_request
       end
     end
 
@@ -63,7 +62,7 @@ describe 'POST api/v1/targets', type: :request do
 
       it 'does not return a successful response' do
         subject
-        expect(response.status).to eq(failed_response)
+        expect(response).to be_bad_request
       end
     end
 
@@ -76,7 +75,11 @@ describe 'POST api/v1/targets', type: :request do
 
       it 'does not return a successful response' do
         subject
-        expect(response.status).to eq(failed_response)
+        expect(response).to be_bad_request
+      end
+      it 'returns an error message' do
+        subject
+        expect(json[:errors][:user]).to eq(["You can't create more than 3 targets"])
       end
     end
   end
