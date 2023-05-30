@@ -13,4 +13,4 @@ en:
   model:
     target:
       errors:
-        invalid_amount: "You can't create more than 3 targets"
+        invalid_amount: You can't create more than 3 targets
