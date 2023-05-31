@@ -80,7 +80,6 @@ describe 'POST api/v1/targets', type: :request do
 
       it 'returns the error message' do
         subject
-        pry
         expect(json[:errors][:user].first).to eq(I18n.t('model.target.errors.invalid_amount'))
       end
     end
