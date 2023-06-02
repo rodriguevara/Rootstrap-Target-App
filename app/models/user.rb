@@ -41,7 +41,7 @@ class User < ApplicationRecord
   before_validation :init_uid
 
   has_many :targets, dependent: :destroy
-  has_many :conversations_users
+  has_many :conversations_users, dependent: :destroy
   has_many :conversations, through: :conversations_users
 
   def full_name

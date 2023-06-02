@@ -7,7 +7,7 @@
 #  updated_at :datetime         not null
 #
 class Conversation < ApplicationRecord
-  has_many :conversations_users
+  has_many :conversations_users, dependent: :destroy
   has_many :users, through: :conversations_users
 
   def self.create_chat(user1, user2)

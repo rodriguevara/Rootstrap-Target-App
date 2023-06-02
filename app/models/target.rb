@@ -25,8 +25,8 @@ class Target < ApplicationRecord
   validates :radius, presence: true, numericality: { greater_than: 0 }
   validates :lat, :lon, presence: true, numericality: true
 
-  scope :exclude_current_user, ->(user_id) { where.not(user_id: user_id) }
-  scope :with_same_topic, ->(topic_id) { where(topic_id: topic_id) }
+  scope :exclude_current_user, ->(current_user_id) { where.not(user_id: current_user_id) }
+  scope :with_same_topic, ->(topic) { where(topic_id: topic) }
 
   def user_targets_count
     return unless user.targets.count >= 3
