@@ -20,7 +20,6 @@
 class Target < ApplicationRecord
   belongs_to :user
   belongs_to :topic
-  validates :user_id, presence: true
   validate :user_targets_count, on: :create
   validates :title, presence: true
   validates :radius, presence: true, numericality: { greater_than: 0 }
