@@ -18,10 +18,10 @@ class Conversation < ApplicationRecord
     conversation
   end
 
-  def self.already_created?(user1, user2)
+  def self.already_created?(user_1, user_2)
     result = false
-    user1.conversations.each do |conv|
-      result = true if conv.users.include?(user2)
+    user_1.conversations.each do |conv|
+      result = true if conv.users.include?(user_2)
     end
     result
   end
