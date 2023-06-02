@@ -10,11 +10,11 @@ class Conversation < ApplicationRecord
   has_many :conversations_users, dependent: :destroy
   has_many :users, through: :conversations_users
 
-  def self.create_chat(user1, user2)
-    return if already_created?(user1, user2)
+  def self.create_chat(current_user, other_user)
+    return if already_created?(current_user, other_user)
 
-    conversation = user1.conversations.create!
-    user2.conversations << conversation
+    conversation = current_user.conversations.create!
+    other_user.conversations << conversation
     conversation
   end
 
