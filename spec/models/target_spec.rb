@@ -42,17 +42,17 @@ RSpec.describe Target, type: :model do
   end
 
   context 'when the user has reached the limited number of targets' do
-    let(:user) { create(:user) }
+    let(:user1) { create(:user) }
     let(:target1) { create(:target) }
     let(:target2) { create(:target) }
     let(:target3) { create(:target) }
 
     before do
-      user.targets << [target1, target2, target3]
+      user1.targets << [target1, target2, target3]
     end
 
     it 'does not allow the creation of a target' do
-      target4 = build(:target, user: user)
+      target4 = build(:target, user: user1)
       expect(target4).to be_invalid
     end
   end
