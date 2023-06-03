@@ -65,5 +65,23 @@ describe 'POST api/v1/targets', type: :request do
         expect(response).to be_bad_request
       end
     end
+
+    context 'when the user has a maximum 3 targets created' do
+      let!(:user_targets) { create_list(:target, 3, user:) }
+
+      it 'does not create the target' do
+        expect { subject }.not_to change { Target.count }
+      end
+
+      it 'does not return a successful response' do
+        subject
+        expect(response).to be_bad_request
+      end
+
+      it 'returns the error message' do
+        subject
+        expect(json[:errors][:user].first).to eq(I18n.t('model.target.errors.invalid_amount'))
+      end
+    end
   end
 end

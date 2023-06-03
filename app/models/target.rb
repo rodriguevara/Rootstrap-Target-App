@@ -18,9 +18,16 @@
 #  index_targets_on_user_id   (user_id)
 #
 class Target < ApplicationRecord
+  belongs_to :user
+  belongs_to :topic
+  validate :user_targets_count, on: :create
   validates :title, presence: true
   validates :radius, presence: true, numericality: { greater_than: 0 }
   validates :lat, :lon, presence: true, numericality: true
-  belongs_to :user
-  belongs_to :topic
+
+  def user_targets_count
+    return unless user.targets.count >= 3
+
+    errors.add(:user, I18n.t('model.target.errors.invalid_amount'))
+  end
 end
