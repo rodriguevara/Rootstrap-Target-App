@@ -1,0 +1,13 @@
+
+[1mFrom:[0m /mnt/c/Users/rorro/Documents/Prog_rorro/rootstrap/rootstrap-target-app/spec/requests/api/v1/topics/topics_spec.rb:20 :
+
+    [1;34m15[0m:   [32mend[0m
+    [1;34m16[0m: 
+    [1;34m17[0m:   it [31m[1;31m'[0m[31mreturns topics in correct format[1;31m'[0m[31m[0m [32mdo[0m
+    [1;34m18[0m:     subject
+    [1;34m19[0m:     pry
+ => [1;34m20[0m:     expect(json[[33m:topics[0m].first[[33m:id[0m]).to eq(first_topic.id)
+    [1;34m21[0m:     expect(json[[33m:topics[0m].first[[33m:label[0m]).to eq(first_topic.label)
+    [1;34m22[0m:   [32mend[0m
+    [1;34m23[0m: [32mend[0m
+
