@@ -80,7 +80,7 @@ describe 'POST api/v1/targets', type: :request do
 
       it 'returns the error message' do
         subject
-        expect(json[:errors][:user].first).to eq("You can't create more than 3 targets")
+        expect(json[:errors][:user].first).to eq(I18n.t('model.target.errors.invalid_amount'))
       end
     end
   end

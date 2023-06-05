@@ -18,7 +18,7 @@ describe 'DELETE api/v1/targets/id', type: :request do
   context 'when the target does not belong to the logged user' do
     let(:id) { targets.first.id }
 
-    it 'does not find the target' do
+    it 'does not return a successful response' do
       subject
       expect(response).to be_not_found
     end

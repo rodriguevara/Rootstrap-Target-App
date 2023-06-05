@@ -31,7 +31,7 @@ class Target < ApplicationRecord
   def user_targets_count
     return unless user.targets.count >= 3
 
-    errors.add(:user, "You can't create more than 3 targets")
+    errors.add(:user, I18n.t('model.target.errors.invalid_amount'))
   end
 
   def compatible_targets
