@@ -11,9 +11,9 @@ en:
       missing_param: A required param is missing
       not_found: Couldn't find the record
   model:
-    target:
-      errors:
-        invalid_amount: You can't create more than 3 targets
     message:
       errors:
         invalid_sender: Doesn't belong to the conversation
+    target:
+      errors:
+        invalid_amount: You can't create more than 3 targets
