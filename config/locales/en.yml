@@ -14,3 +14,6 @@ en:
     target:
       errors:
         invalid_amount: You can't create more than 3 targets
+    message:
+      errors:
+        invalid_sender: Doesn't belong to the conversation

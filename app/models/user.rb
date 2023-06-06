@@ -43,6 +43,7 @@ class User < ApplicationRecord
   has_many :targets, dependent: :destroy
   has_many :conversations_users, dependent: :destroy
   has_many :conversations, through: :conversations_users
+  has_many :messages, dependent: :destroy, inverse_of: :sender
 
   def full_name
     return username if first_name.blank?
