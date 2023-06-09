@@ -2,7 +2,7 @@ module Api
   module V1
     class MessagesController < Api::V1::ApiController
       def index
-        @messages = policy_scope(conversation.messages).includes([:sender])
+        @messages = policy_scope(conversation.messages)
       end
 
       def create
