@@ -16,8 +16,8 @@
 #
 FactoryBot.define do
   factory :message do
+    conversation { create(:conversation, users: [sender]) }
     body { 'this is a test' }
     association :sender, factory: :user
-    conversation { create(:conversation, users: [sender]) }
   end
 end
