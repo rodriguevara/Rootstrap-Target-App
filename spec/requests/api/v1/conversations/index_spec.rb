@@ -13,7 +13,7 @@ describe 'GET /api/v1/conversations', type: :request do
       lat: target.lat,
       lon: target.lon
     )
-    create(:conversation, users: [user, user2])
+    create(:conversation, users: [user, user2], topic_id: target.topic.id)
   end
 
   context 'when the request is valid' do
@@ -21,8 +21,8 @@ describe 'GET /api/v1/conversations', type: :request do
 
     it 'returns the conversations in the correct format' do
       subject
-      expect(json['conversations'].first['matched_user'].first['username']).to eq(user2.username)
-      expect(json['conversations'].first['matched_user'].first['email']).to eq(user2.email)
+      expect(json['conversations'].first['matched_user']['username']).to eq(user2.username)
+      expect(json['conversations'].first['matched_user']['first_name']).to eq(user2.first_name)
     end
 
     it 'returns a successful response' do

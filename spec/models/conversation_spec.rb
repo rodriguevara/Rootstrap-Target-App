@@ -5,6 +5,7 @@
 #  id         :bigint           not null, primary key
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  topic_id   :integer          not null
 #
 require 'rails_helper'
 

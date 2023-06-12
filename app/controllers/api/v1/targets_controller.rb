@@ -10,7 +10,7 @@ module Api
         @target = current_user.targets.create!(target_params)
         @compatible_users = @target.compatible_targets.map do |target|
           compatible_user = target.user
-          Conversation.create_chat(current_user, compatible_user)
+          Conversation.create_chat(current_user, compatible_user, target_params[:topic_id])
           compatible_user
         end
         @compatible_users = @compatible_users.uniq

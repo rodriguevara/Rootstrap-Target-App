@@ -1,9 +1,13 @@
 describe 'POST api/v1/targets', type: :request do
   let(:user) { create(:user) }
+  let(:user2) { create(:user) }
   let(:topic)           { create(:topic) }
   let(:target)          { Target.last }
 
   describe 'POST create' do
+    before do
+      create(:target, user_id: user2.id, topic_id: topic.id)
+    end
     subject { post api_v1_targets_path, params:, headers: auth_headers, as: :json }
     let(:title)           { 'test' }
     let(:radius)          { 5 }
@@ -27,7 +31,7 @@ describe 'POST api/v1/targets', type: :request do
     end
 
     it 'creates the target' do
-      expect { subject }.to change(Target, :count).from(0).to(1)
+      expect { subject }.to change(user.targets, :count).from(0).to(1)
     end
 
     it 'returns the target' do
@@ -37,6 +41,17 @@ describe 'POST api/v1/targets', type: :request do
       expect(json[:target][:lat]).to eq(target.lat)
       expect(json[:target][:lon]).to eq(target.lon)
       expect(json[:target][:topic_id]).to eq(target.topic_id)
+    end
+
+    context 'when there is a match' do
+      it 'returns the matched user' do
+        subject
+        expect(json[:compatible_users].first[:username]).to eq(user2.username)
+      end
+
+      it 'creates a conversation between the users' do
+        expect { subject }.to change(Conversation, :count).by(1)
+      end
     end
 
     context 'when radius is incorrect' do
@@ -81,6 +96,21 @@ describe 'POST api/v1/targets', type: :request do
       it 'returns the error message' do
         subject
         expect(json[:errors][:user].first).to eq(I18n.t('model.target.errors.invalid_amount'))
+      end
+    end
+
+    context 'when there is no matched users' do
+      before do
+        user2.targets.first.destroy
+      end
+      it 'returns an empty array of matched users' do
+        subject
+        expect(json['compatible_users']).to match_array([])
+      end
+
+      it 'does not create the conversation between users' do
+        subject
+        expect { subject }.not_to change(Conversation, :count)
       end
     end
   end

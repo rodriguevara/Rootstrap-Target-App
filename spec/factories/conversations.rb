@@ -5,10 +5,12 @@
 #  id         :bigint           not null, primary key
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  topic_id   :integer          not null
 #
 FactoryBot.define do
   factory :conversation do
     factory :conversation_with_users do
+      topic_id { 1 }
       transient do
         user1    { create(:user) }
         user2    { create(:user) }
