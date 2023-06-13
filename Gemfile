@@ -68,5 +68,5 @@ group :assets do
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'kaminari'
+gem 'kaminari', '~> 1.2', '>= 1.2.2'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]

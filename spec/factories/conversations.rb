@@ -29,6 +29,60 @@ FactoryBot.define do
           conversation: conversation1,
           sender: evaluator.user2
         )
+        create_list(
+          :message,
+          evaluator.msg_count,
+          conversation: conversation1,
+          sender: evaluator.user1
+        )
+        create_list(
+          :message,
+          evaluator.msg_count,
+          conversation: conversation1,
+          sender: evaluator.user1
+        )
+        create_list(
+          :message,
+          evaluator.msg_count,
+          conversation: conversation1,
+          sender: evaluator.user1
+        )
+        create_list(
+          :message,
+          evaluator.msg_count,
+          conversation: conversation1,
+          sender: evaluator.user1
+        )
+        create_list(
+          :message,
+          evaluator.msg_count,
+          conversation: conversation1,
+          sender: evaluator.user1
+        )
+        create_list(
+          :message,
+          evaluator.msg_count,
+          conversation: conversation1,
+          sender: evaluator.user1
+        )
+        create_list(
+          :message,
+          evaluator.msg_count,
+          conversation: conversation1,
+          sender: evaluator.user1
+        )
+        create_list(
+          :message,
+          evaluator.msg_count,
+          conversation: conversation1,
+          sender: evaluator.user1
+        )
+        create_list(
+          :message,
+          evaluator.msg_count,
+          conversation: conversation1,
+          sender: evaluator.user1
+        )
       end
     end
   end
