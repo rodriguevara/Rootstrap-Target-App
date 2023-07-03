@@ -25,7 +25,7 @@ class Target < ApplicationRecord
   validates :radius, presence: true, numericality: { greater_than: 0 }
   validates :lat, :lon, presence: true, numericality: true
 
-  scope :exclude_current_user, ->(current_user_id) { where.not(user_id: current_user_id) }
+  scope :from_other_users, ->(user_id) { where.not(user_id: user_id) }
   scope :with_same_topic, ->(topic) { where(topic_id: topic) }
 
   def user_targets_count
@@ -35,6 +35,6 @@ class Target < ApplicationRecord
   end
 
   def compatible_targets
-    Target.exclude_current_user(user_id).with_same_topic(topic_id)
+    Target.from_other_users(user_id).with_same_topic(topic_id)
   end
 end

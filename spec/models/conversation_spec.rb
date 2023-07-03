@@ -5,7 +5,11 @@
 #  id         :bigint           not null, primary key
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  topic_id   :integer          not null
+#  topic_id   :bigint           not null
+#
+# Indexes
+#
+#  index_conversations_on_topic_id  (topic_id)
 #
 require 'rails_helper'
 

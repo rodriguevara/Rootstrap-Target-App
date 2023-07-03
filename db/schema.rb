@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_09_213555) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_13_152015) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_trgm"
   enable_extension "plpgsql"
@@ -65,7 +65,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_09_213555) do
   create_table "conversations", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "topic_id", null: false
+    t.bigint "topic_id", null: false
+    t.index ["topic_id"], name: "index_conversations_on_topic_id"
   end
 
   create_table "conversations_users", id: false, force: :cascade do |t|
@@ -168,6 +169,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_09_213555) do
   end
 
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "conversations", "topics"
   add_foreign_key "exception_hunter_errors", "exception_hunter_error_groups", column: "error_group_id"
   add_foreign_key "targets", "topics"
   add_foreign_key "targets", "users"
