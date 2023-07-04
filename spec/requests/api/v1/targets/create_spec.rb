@@ -5,9 +5,6 @@ describe 'POST api/v1/targets', type: :request do
   let(:target)          { Target.last }
 
   describe 'POST create' do
-    before do
-      create(:target, user_id: user2.id, topic_id: topic.id)
-    end
     subject { post api_v1_targets_path, params:, headers: auth_headers, as: :json }
     let(:title)           { 'test' }
     let(:radius)          { 5 }
@@ -44,6 +41,7 @@ describe 'POST api/v1/targets', type: :request do
     end
 
     context 'when there is a match' do
+      let!(:target) { create(:target, user_id: user2.id, topic_id: topic.id) }
       it 'returns the matched user' do
         subject
         expect(json[:compatible_users].first[:username]).to eq(user2.username)
@@ -100,9 +98,8 @@ describe 'POST api/v1/targets', type: :request do
     end
 
     context 'when there is no matched users' do
-      before do
-        user2.targets.first.destroy
-      end
+      let(:topic2) { create(:topic) }
+      let!(:target) { create(:target, user_id: user2.id, topic_id: topic2.id) }
       it 'returns an empty array of matched users' do
         subject
         expect(json['compatible_users']).to match_array([])

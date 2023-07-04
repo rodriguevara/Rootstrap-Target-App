@@ -13,8 +13,9 @@ describe 'GET /api/v1/conversations', type: :request do
       lat: target.lat,
       lon: target.lon
     )
-    create(:conversation, users: [user, user2], topic_id: target.topic.id)
   end
+  let(:conversation) { create(:conversation, user1: user, user2:) }
+  # create(:conversation, users: [user, user2], topic_id: target.topic.id)
 
   context 'when the request is valid' do
     subject { get api_v1_conversations_path, headers: auth_headers, as: :json }
