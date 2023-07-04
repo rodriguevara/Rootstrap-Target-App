@@ -3,8 +3,8 @@ module Api
     class MessagesController < Api::V1::ApiController
       def index
         @messages =
-          policy_scope(conversation.messages).order('created_at DESC').page(params[:page])
-                                             .per(ENV.fetch('MAX_MESSAGES'))
+          policy_scope(conversation.messages).order(created_at: :desc).page(params[:page])
+                                             .per(Message::MAX_MESSAGES)
       end
 
       def create

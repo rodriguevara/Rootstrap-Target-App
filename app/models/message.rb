@@ -20,6 +20,8 @@ class Message < ApplicationRecord
 
   validates :body, presence: true
   validate :sender_from_conversation
+  MAX_MESSAGES = ENV['MAX_MESSAGES'].freeze
+  cattr_reader :max_messages
 
   private
 
