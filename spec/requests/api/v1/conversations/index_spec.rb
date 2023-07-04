@@ -14,7 +14,7 @@ describe 'GET /api/v1/conversations', type: :request do
       lon: target.lon
     )
   end
-  let(:conversation) { create(:conversation, user1: user, user2: user2) }
+  # let(:conversation) { create(:conversation, user1: user, user2: user2) }
   # create(:conversation, users: [user, user2], topic_id: target.topic.id)
 
   context 'when the request is valid' do

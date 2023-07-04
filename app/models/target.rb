@@ -25,7 +25,7 @@ class Target < ApplicationRecord
   validates :radius, presence: true, numericality: { greater_than: 0 }
   validates :lat, :lon, presence: true, numericality: true
 
-  scope :from_other_users, ->(user_id) { where.not(user_id: user_id) }
+  scope :from_other_users, ->(userid) { where.not(user_id: userid) }
   scope :with_same_topic, ->(topic) { where(topic_id: topic) }
 
   def user_targets_count
