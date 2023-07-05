@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :conversations_user do
-    conversation
     user
+    conversation
   end
 end
