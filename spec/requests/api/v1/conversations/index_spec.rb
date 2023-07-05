@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'GET /api/v1/conversations', type: :request do
   let(:user)   { create(:user) }
   let(:user2)  { create(:user) }
-  let(:topic)           { create(:topic) }
+  let(:topic)  { create(:topic) }
   # before(:each) do
   #   target = create(:target, user_id: user.id)
   #   create_list(
@@ -14,12 +14,12 @@ describe 'GET /api/v1/conversations', type: :request do
   #     lon: target.lon
   #   )
   # end
-  let(:target1) { create(:target, user_id: user.id, topic_id: topic.id, radius: 111, lat: 555, lon: 666) }
-  let(:target2) { create(:target, user_id: user2.id, topic_id: topic.id, radius: 111, lat: 555, lon: 666) }
+  let(:target1) { create(:target, user_id: user.id, topic_id: topic.id, radius: 1, lat: 5, lon: 6) }
+  let(:target) { create(:target, user_id: user2.id, topic_id: topic.id, radius: 1, lat: 5, lon: 6) }
 
-  let!(:conversation) { create(:conversation, topic_id: topic.id)}
-  let!(:conversations_users_1) { create(:conversations_user, user: user, conversation: conversation) }
-  let!(:conversations_users_2) { create(:conversations_user, user: user2, conversation: conversation) }
+  let!(:conversation) { create(:conversation, topic_id: topic.id) }
+  let!(:conversations_user1) { create(:conversations_user, user: user, conversation: conversation) }
+  let!(:conversations_user2) { create(:conversations_user, user: user2, conversation: conversation) }
 
   context 'when the request is valid' do
     subject { get api_v1_conversations_path, headers: auth_headers, as: :json }

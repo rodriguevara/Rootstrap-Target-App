@@ -13,15 +13,6 @@
 #
 FactoryBot.define do
   factory :conversation do
-      topic_id { 1 }
+    topic_id { 1 }
   end
-  # transient do
-    #   user1    { create(:user) }
-    #   user2    { create(:user) }
-    # end
-    # after(:create) do |conversation, evaluator|
-    #   conversation.users << evaluator.user1
-    #   conversation.users << evaluator.user2
-    # end
-    # end
 end
