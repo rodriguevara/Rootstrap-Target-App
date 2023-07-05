@@ -13,6 +13,6 @@
 #
 FactoryBot.define do
   factory :conversation do
-    topic_id { 1 }
+    topic
   end
 end
