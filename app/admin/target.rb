@@ -1,6 +1,15 @@
 ActiveAdmin.register Target do
   permit_params :title, :user_id, :radius, :lat, :lon, :topic_id, :created_at
 
+  filter :id
+  filter :title
+  filter :user_id
+  filter :radius
+  filter :lat
+  filter :lon
+  filter :topic_id
+  filter :created_at
+
   index do
     selectable_column
     id_column
@@ -14,15 +23,6 @@ ActiveAdmin.register Target do
 
     actions
   end
-
-  filter :id
-  filter :title
-  filter :user_id
-  filter :radius
-  filter :lat
-  filter :lon
-  filter :topic_id
-  filter :created_at
 
   show do
     attributes_table do

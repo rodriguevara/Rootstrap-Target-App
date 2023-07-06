@@ -21,4 +21,20 @@ RSpec.describe 'Admin Targets', type: :request do
       expect(response.body).to include(targets.second.title)
     end
   end
+
+  describe 'Filter targets' do
+    it 'shows only the filtered targets by topic' do
+      topic1 = FactoryBot.create(:topic)
+      topic2 = FactoryBot.create(:topic)
+
+      target1 = FactoryBot.create(:target, topic: topic1)
+      target2 = FactoryBot.create(:target, topic: topic2)
+
+      get '/admin/targets', params: { q: { topic_id_eq: topic1.id } }
+
+      expect(response).to be_successful
+      expect(response.body).to include(target1.title)
+      expect(response.body).not_to include(target2.title)
+    end
+  end
 end
