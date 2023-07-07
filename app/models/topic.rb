@@ -17,4 +17,5 @@ class Topic < ApplicationRecord
 
   has_one_attached :image, dependent: :destroy
   has_many :targets, dependent: :destroy
+  has_many :conversations, dependent: :destroy
 end
