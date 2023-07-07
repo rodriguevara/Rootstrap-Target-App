@@ -41,6 +41,8 @@ class User < ApplicationRecord
   before_validation :init_uid
 
   has_many :targets, dependent: :destroy
+  has_many :conversations_users, dependent: :destroy
+  has_many :conversations, through: :conversations_users
 
   def full_name
     return username if first_name.blank?
@@ -53,6 +55,11 @@ class User < ApplicationRecord
       user.password = Devise.friendly_token[0, 20]
       user.assign_attributes user_params.except('id')
     end
+  end
+
+  def conversation_with(user)
+    Conversation.joins(:conversations_users).where(conversations_users:
+    { user_id: id, conversation_id: user.conversations.ids }).first
   end
 
   private

@@ -25,9 +25,16 @@ class Target < ApplicationRecord
   validates :radius, presence: true, numericality: { greater_than: 0 }
   validates :lat, :lon, presence: true, numericality: true
 
+  scope :from_other_users, ->(userid) { where.not(user_id: userid) }
+  scope :with_same_topic, ->(topic) { where(topic_id: topic) }
+
   def user_targets_count
     return unless user.targets.count >= 3
 
     errors.add(:user, I18n.t('model.target.errors.invalid_amount'))
+  end
+
+  def compatible_targets
+    Target.from_other_users(user_id).with_same_topic(topic_id)
   end
 end

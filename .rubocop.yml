@@ -21,6 +21,7 @@ Layout/EndOfLine:
   Enabled: false
 
 Layout/LineLength:
+  Max: 120
   Exclude:
     - db/migrate/20161011184702_devise_create_admin_users.rb
     - db/migrate/20161011151353_devise_create_users.rb
@@ -34,3 +35,7 @@ Rails/Delegate:
 Rails/LexicallyScopedActionFilter:
   Exclude:
     - app/controllers/api/v1/api_controller.rb
+
+Style/HashSyntax:
+  Exclude:
+    - spec/requests/api/v1/conversations/index_spec.rb
