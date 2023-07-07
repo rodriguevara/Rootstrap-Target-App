@@ -101,6 +101,7 @@ describe 'POST api/v1/targets', type: :request do
     context 'when there is no matched users' do
       let(:topic2) { create(:topic) }
       let!(:target) { create(:target, user_id: user2.id, topic_id: topic2.id) }
+      
       it 'returns an empty array of matched users' do
         subject
         expect(json['compatible_users']).to match_array([])
