@@ -1,6 +1,6 @@
 describe 'POST api/v1/targets', type: :request do
-  let(:user) { create(:user) }
-  let(:user2) { create(:user) }
+  let(:user)            { create(:user) }
+  let(:user2)           { create(:user) }
   let(:topic)           { create(:topic) }
   let(:target)          { Target.last }
 
