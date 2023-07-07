@@ -42,6 +42,7 @@ describe 'POST api/v1/targets', type: :request do
 
     context 'when there is a match' do
       let!(:target) { create(:target, user_id: user2.id, topic_id: topic.id) }
+      
       it 'returns the matched user' do
         subject
         expect(json[:compatible_users].first[:username]).to eq(user2.username)
