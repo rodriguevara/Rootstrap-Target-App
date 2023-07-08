@@ -15,7 +15,7 @@
 #  last_sign_in_ip        :inet
 #  first_name             :string           default("")
 #  last_name              :string           default("")
-#  username               :string           default("")
+#  username               :string           default(""), not null
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  provider               :string           default("email"), not null
