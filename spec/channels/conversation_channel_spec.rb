@@ -3,7 +3,6 @@ require 'rails_helper'
 RSpec.describe ConversationChannel, type: :channel do
   let(:user1) { create(:user) }
   let(:user2) { create(:user) }
-  # let(:conversation) { create(:conversation, user1: user1, user2: user2) }
   let!(:conversation) { create(:conversation, users: [user1, user2]) }
 
   before do

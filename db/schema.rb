@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_13_152015) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_08_170401) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_trgm"
   enable_extension "plpgsql"
@@ -167,7 +167,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_13_152015) do
     t.inet "last_sign_in_ip"
     t.string "first_name", default: ""
     t.string "last_name", default: ""
-    t.string "username", default: ""
+    t.string "username", default: "", null: false
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
     t.string "provider", default: "email", null: false
