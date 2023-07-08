@@ -7,8 +7,8 @@ describe 'GET /api/v1/conversations/:conversation_id/messages', type: :request d
   let!(:conversation1) { create(:conversation, topic_id: topic.id) }
   let!(:conversations_user1) { create(:conversations_user, user:, conversation: conversation1) }
   let!(:conversations_user2) { create(:conversations_user, user: user2, conversation: conversation1) }
-  let(:message) do
-    create(:message, conversation: conversation1, user_id: user.id)
+  let!(:messages) do
+    create_list(:message, 25, conversation: conversation1, user_id: user.id)
   end
   context 'when the request is valid' do
     subject do
@@ -19,10 +19,7 @@ describe 'GET /api/v1/conversations/:conversation_id/messages', type: :request d
       subject
       expect(json).not_to be_empty
       expect(json['messages'].pluck('id'))
-        .to match_array(conversation.messages.last(10).pluck(:id))
-      expect(json['messages'].size).to eq(conversation1.messages.size)
-      expect(json['messages'].pluck('id'))
-        .to match_array(conversation1.messages.pluck(:id))
+        .to match_array(conversation1.messages.last(10).pluck(:id))
     end
 
     it 'returns a successful response' do
@@ -32,7 +29,7 @@ describe 'GET /api/v1/conversations/:conversation_id/messages', type: :request d
 
     it 'returns the correct amount of messages per page' do
       subject
-      expect(json['messages'].size).to eq(ENV.fetch('MAX_MESSAGES').to_i)
+      expect(json['messages'].size).to eq(Message::MAX_MESSAGES.to_i)
     end
   end
 end
