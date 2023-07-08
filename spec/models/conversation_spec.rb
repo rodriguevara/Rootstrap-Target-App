@@ -14,7 +14,6 @@
 require 'rails_helper'
 
 RSpec.describe Conversation, type: :model do
-  subject { create(:conversation_with_users_messages) }
   subject { create(:conversation) }
 
   context 'validations' do
