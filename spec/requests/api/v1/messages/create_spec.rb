@@ -56,7 +56,7 @@ describe 'POST /api/v1/conversations/:conversation_id/messages', type: :request 
            params: { body: '', conversation: conversation1, user_id: user.id },
            headers: auth_headers, as: :json
     end
-    
+
     it 'does not return a successful response' do
       subject
       expect(response).to be_bad_request
