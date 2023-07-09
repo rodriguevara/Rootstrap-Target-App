@@ -31,6 +31,7 @@ RSpec.describe 'Admin Targets', type: :request do
       target2 = FactoryBot.create(:target, title: 'target2', topic: topic2)
 
       get '/admin/targets', params: { q: { topic_id_eq: target1.topic_id } }
+
       expect(response).to be_successful
       expect(response.body).to include(target1.title)
       expect(response.body).not_to include(target2.title)
