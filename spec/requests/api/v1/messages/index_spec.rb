@@ -7,10 +7,11 @@ describe 'GET /api/v1/conversations/:conversation_id/messages', type: :request d
   let!(:conversation1) { create(:conversation, topic_id: topic.id) }
   let!(:conversations_user1) { create(:conversations_user, user:, conversation: conversation1) }
   let!(:conversations_user2) { create(:conversations_user, user: user2, conversation: conversation1) }
-  let!(:messages) do
-    create_list(:message, 25, conversation: conversation1, user_id: user.id)
-  end
+
   context 'when the request is valid' do
+    let!(:messages) do
+      create_list(:message, 25, conversation: conversation1, user_id: user.id)
+    end
     subject do
       get "/api/v1/conversations/#{conversation1.id}/messages", headers: auth_headers, as: :json
     end
