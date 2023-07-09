@@ -20,7 +20,7 @@ class Message < ApplicationRecord
 
   validates :body, presence: true
   validate :sender_from_conversation
-  MAX_MESSAGES = ENV['MAX_MESSAGES'].freeze
+  MAX_MESSAGES = 10
 
   private
 

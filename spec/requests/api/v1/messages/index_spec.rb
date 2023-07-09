@@ -30,7 +30,7 @@ describe 'GET /api/v1/conversations/:conversation_id/messages', type: :request d
 
     it 'returns the correct amount of messages per page' do
       subject
-      expect(json['messages'].size).to eq(Message::MAX_MESSAGES.to_i)
+      expect(json['messages'].size).to eq(Message::MAX_MESSAGES)
     end
   end
 end

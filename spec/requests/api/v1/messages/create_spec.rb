@@ -8,13 +8,14 @@ describe 'POST /api/v1/conversations/:conversation_id/messages', type: :request 
   let!(:conversations_user1) { create(:conversations_user, user:, conversation: conversation1) }
   let!(:conversations_user2) { create(:conversations_user, user: user2, conversation: conversation1) }
 
-  subject do
-    post "/api/v1/conversations/#{conversation1.id}/messages",
-         params: { body: 'test', conversation: conversation1, user_id: user.id },
-         headers: auth_headers, as: :json
-  end
-
   context 'when the request is valid' do
+
+    subject do
+      post "/api/v1/conversations/#{conversation1.id}/messages",
+           params: { body: 'test', conversation: conversation1, user_id: user.id },
+           headers: auth_headers, as: :json
+    end
+
     it 'returns a successful response' do
       subject
 
