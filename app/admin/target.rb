@@ -1,13 +1,13 @@
 ActiveAdmin.register Target do
   permit_params :title, :user_id, :radius, :lat, :lon, :topic_id, :created_at
 
-  filter :id
-  filter :title
-  filter :user_id
+  filter :id, filters: [:equals]
+  filter :title, filters: [:equals]
+  filter :user_id, filters: [:equals]
   filter :radius
   filter :lat
   filter :lon
-  filter :topic_id
+  filter :topic_id, as: :numeric, filters: [:equals]
   filter :created_at
 
   index do
