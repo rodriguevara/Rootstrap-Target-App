@@ -3,11 +3,11 @@ ActiveAdmin.register Target do
 
   filter :id, as: :select
   filter :title
-  filter :user, as: :select, collection: User.all.pluck(:email, :id)
+  filter :user, as: :select, collection: -> { User.all.pluck(:email, :id) }
   filter :radius
   filter :lat
   filter :lon
-  filter :topic, as: :select, collection: Topic.all.pluck(:label, :id), multiple: true
+  filter :topic, as: :select, collection: Topic.all.pluck(:label, :id)
   filter :created_at
 
   index do
