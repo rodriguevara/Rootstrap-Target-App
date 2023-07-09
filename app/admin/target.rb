@@ -7,7 +7,7 @@ ActiveAdmin.register Target do
   filter :radius
   filter :lat
   filter :lon
-  filter :topic, as: :select, collection: Topic.all.pluck(:label, :id)
+  filter :topic, as: :select, collection: -> { Topic.all.pluck(:label, :id) }
   filter :created_at
 
   index do
