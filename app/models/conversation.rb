@@ -15,4 +15,5 @@ class Conversation < ApplicationRecord
   belongs_to :topic
   has_many :conversations_users, dependent: :destroy
   has_many :users, through: :conversations_users
+  has_many :messages, dependent: :destroy
 end

@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1, defaults: { format: :json } do
       get :status, to: 'api#status'
-
+      mount ActionCable.server => '/cable'
       devise_scope :user do
         resource :user, only: %i[update show]
       end
@@ -20,7 +20,9 @@ Rails.application.routes.draw do
       end
       resources :topics, only: %i[index]
       resources :targets, only: %i[create index destroy]
-      resources :conversations, only: %i[index]
+      resources :conversations, only: %i[index] do
+        resources :messages, only: %i[index create]
+      end
     end
   end
 end

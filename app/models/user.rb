@@ -15,7 +15,7 @@
 #  last_sign_in_ip        :inet
 #  first_name             :string           default("")
 #  last_name              :string           default("")
-#  username               :string           default("")
+#  username               :string           default(""), not null
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  provider               :string           default("email"), not null
@@ -43,6 +43,7 @@ class User < ApplicationRecord
   has_many :targets, dependent: :destroy
   has_many :conversations_users, dependent: :destroy
   has_many :conversations, through: :conversations_users
+  has_many :messages, dependent: :destroy, inverse_of: :sender
 
   def full_name
     return username if first_name.blank?
