@@ -2,7 +2,9 @@ module Api
   module V1
     class MessagesController < Api::V1::ApiController
       def index
-        @messages = policy_scope(conversation.messages)
+        @messages =
+          policy_scope(conversation.messages).order(created_at: :desc).page(params[:page])
+                                             .per(Message::MAX_MESSAGES)
       end
 
       def create
