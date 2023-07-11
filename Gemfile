@@ -68,5 +68,6 @@ group :assets do
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
+gem 'kaminari', '~> 1.2', '>= 1.2.2'
 gem 'rufus-scheduler', '~> 3.9', '>= 3.9.1'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
