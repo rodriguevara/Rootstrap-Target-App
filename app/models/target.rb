@@ -29,7 +29,7 @@ class Target < ApplicationRecord
   scope :with_same_topic, ->(topic) { where(topic_id: topic) }
 
   def user_targets_count
-    return unless user.targets.count >= 3
+    return unless user.targets.count >= 3 && !user.vip?
 
     errors.add(:user, I18n.t('model.target.errors.invalid_amount'))
   end

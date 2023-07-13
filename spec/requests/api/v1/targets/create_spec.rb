@@ -80,7 +80,7 @@ describe 'POST api/v1/targets', type: :request do
       end
     end
 
-    context 'when the user has a maximum 3 targets created' do
+    context 'when the non VIP user has a maximum 3 targets created' do
       let!(:user_targets) { create_list(:target, 3, user:) }
 
       it 'does not create the target' do
@@ -110,6 +110,15 @@ describe 'POST api/v1/targets', type: :request do
       it 'does not create the conversation between users' do
         subject
         expect { subject }.not_to change(Conversation, :count)
+      end
+    end
+
+    context 'when the user is VIP' do
+      let(:user) { create(:user, vip: true) }
+      let!(:user_targets) { create_list(:target, 3, user:) }
+
+      it 'is able to create more than 3 targets' do
+        expect { subject }.to change(user.targets, :count).from(3).to(4)
       end
     end
   end
